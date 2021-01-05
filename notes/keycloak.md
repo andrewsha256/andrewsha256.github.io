@@ -40,7 +40,7 @@
 start / stop / restart
 
 ```shell
-docker exec example_keycloak_1  /opt/jboss/keycloak/bin/jboss-cli.sh --connect command=:shutdown
+docker exec example_keycloak_1 /opt/jboss/keycloak/bin/jboss-cli.sh --connect command=:shutdown
 ```
 
 ### Database With Docker
@@ -52,4 +52,3 @@ Run database script on start
 ```shell
 docker exec -ti  example_postgres_1 /usr/bin/pg_dump --file "/var/tmp/init_data.sql" --host "localhost" --port "5432" --username "keycloak" --no-password --verbose --format=p "keycloak"
 ```
-
