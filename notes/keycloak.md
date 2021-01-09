@@ -37,10 +37,33 @@
 * How to register a module in container [discussion](https://keycloak.discourse.group/t/how-to-package-extensions-in-a-docker-image/5542).
 * Keycloak docker-compose examples [@trajakovic/keycloak-docker-compose](https://github.com/trajakovic/keycloak-docker-compose).
 
-start / stop / restart
+### Start / Stop / Restart
 
 ```shell
 docker exec example_keycloak_1 /opt/jboss/keycloak/bin/jboss-cli.sh --connect command=:shutdown
+```
+
+### Docker-Copmpose Adding Start Arguments
+
+```shell
+...
+    command:
+      - "-Dkeycloak.profile=preview"
+...
+```
+
+### Docker-Compose Import Data on Start
+
+```shell
+...
+    command:
+      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/imports/realm-export.json"
+      - "-b 0.0.0.0 -Dkeycloak.migration.action=import"
+      - "-Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/jboss/keycloak/imports/users-export.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
+    volumes:
+      - ./realm-export.json:/opt/jboss/keycloak/imports/realm-export.json
+      - ./users-export.json:/opt/jboss/keycloak/imports/users-export.json
+...
 ```
 
 ### Database With Docker
