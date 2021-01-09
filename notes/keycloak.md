@@ -43,7 +43,7 @@
 docker exec example_keycloak_1 /opt/jboss/keycloak/bin/jboss-cli.sh --connect command=:shutdown
 ```
 
-### Docker-Copmpose Adding Start Arguments
+### Docker-Compose Adding Start Arguments
 
 ```shell
 ...
