@@ -45,7 +45,7 @@ docker exec example_keycloak_1 /opt/jboss/keycloak/bin/jboss-cli.sh --connect co
 
 ### Docker-Compose Adding Start Arguments
 
-```shell
+```yaml
 ...
     command:
       - "-Dkeycloak.profile=preview"
@@ -54,7 +54,7 @@ docker exec example_keycloak_1 /opt/jboss/keycloak/bin/jboss-cli.sh --connect co
 
 ### Docker-Compose Import Data on Start
 
-```shell
+```yaml
 ...
     command:
       - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/imports/realm-export.json"
